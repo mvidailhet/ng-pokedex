@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'pokedex-pokemon-item',
@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PokemonItemComponent implements OnInit {
   @Input('pokemonName') name = '';
+  @Output() removeClick = new EventEmitter<string>();
+
   nbCaught = Math.round(Math.random() * 10);
 
   constructor() { }
@@ -14,8 +16,8 @@ export class PokemonItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  generateBackgroundColor() {
-    return this.nbCaught > 5 ? '#00dd00' : '#882222';
+  onRemoveClick() {
+    this.removeClick.emit(this.name);
   }
 
 }

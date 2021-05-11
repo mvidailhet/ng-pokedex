@@ -6,22 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
-  allowNewPokemon = false;
   pokemonName = '';
-  pokemonAdded = false;
 
   pokemons: string[] = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.allowNewPokemon = true;
-    }, 3000);
   }
 
   onAddPokemon() {
-    this.pokemonAdded = true;
     this.pokemons.push(this.pokemonName);
+  }
+
+  removePokemon(pokemonName: string, index: number) {
+    console.log(pokemonName + ' removed');
+    this.pokemons.splice(index, 1);
   }
 }

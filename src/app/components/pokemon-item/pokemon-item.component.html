@@ -1,7 +1,6 @@
 <li
   class="list-group-item"
-  [ngStyle]="{ backgroundColor: generateBackgroundColor() }"
-  [ngClass]="{ 'is-red': nbCaught <= 5 }"
 >
   {{ name }} ({{ nbCaught }} caught)
+  <button type="button" class="btn btn-danger" (click)="onRemoveClick()">Remove</button>
 </li>

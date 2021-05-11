@@ -10,18 +10,18 @@
     />
     <button
       class="btn btn-primary"
-      [disabled]="!allowNewPokemon"
       (click)="onAddPokemon()"
       type="button"
     >
-      Button
+      Add pokemon
     </button>
-  </div>
-  <div *ngIf="pokemonAdded">
-    Pokemon was created ! Pokemon name is: {{ pokemonName }}
   </div>
 </div>
 
 <ul class="list-group">
-  <pokedex-pokemon-item *ngFor="let pokemon of pokemons" [pokemonName]="pokemon"></pokedex-pokemon-item>
+  <pokedex-pokemon-item
+    *ngFor="let pokemon of pokemons; let i = index"
+    [pokemonName]="pokemon"
+    (removeClick)="removePokemon(pokemonName, i)"
+  ></pokedex-pokemon-item>
 </ul>
