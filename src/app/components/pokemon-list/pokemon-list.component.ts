@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'pokedex-pokemon-list',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  @ViewChild('nameInput') nameInputElementRef: ElementRef | undefined;
   pokemonName = '';
 
   pokemons: string[] = [];
@@ -13,9 +14,11 @@ export class PokemonListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   onAddPokemon(element: HTMLElement) {
+    console.log(this.nameInputElementRef?.nativeElement);
     console.log(element);
     this.pokemons.push(this.pokemonName);
   }
