@@ -23,8 +23,5 @@
 </div>
 
 <ul class="list-group">
-
-  <ng-container *ngFor="let pokemon of pokemons; let i = index">
-    {{ i }} <pokedex-pokemon-item></pokedex-pokemon-item>
-  </ng-container>
+  <pokedex-pokemon-item *ngFor="let pokemon of pokemons" [name]="pokemon"></pokedex-pokemon-item>
 </ul>

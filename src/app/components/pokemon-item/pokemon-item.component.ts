@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'pokedex-pokemon-item',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-item.component.scss']
 })
 export class PokemonItemComponent implements OnInit {
+  @Input() name = '';
   nbCaught = Math.round(Math.random() * 10);
 
   constructor() { }
