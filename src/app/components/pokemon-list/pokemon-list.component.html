@@ -1,9 +1,24 @@
 <h2 class="display-3">My Pokemons</h2>
+
 <div class="p-3">
-  <button class="btn btn-primary" [disabled]="!allowNewPokemon" (click)="onAddPokemon()">
-    Add pokemon
-  </button>
-  <span class="ml-3">{{ pokemonAdditionStatus }}</span>
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter a pokemon name"
+      (input)="onUpdatePokemonName($event)"
+    />
+    <button
+      class="btn btn-primary"
+      [disabled]="!allowNewPokemon"
+      (click)="onAddPokemon()"
+      type="button"
+    >
+      Button
+    </button>
+  </div>
+  <div>{{ pokemonName }}</div>
+  <div>{{ pokemonAdditionStatus }}</div>
 </div>
 
 <ul class="list-group">

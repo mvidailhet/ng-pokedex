@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PokemonListComponent implements OnInit {
   allowNewPokemon = false;
   pokemonAdditionStatus = 'No Pokemon was created';
+  pokemonName = '';
 
   constructor() { }
 
@@ -19,6 +20,12 @@ export class PokemonListComponent implements OnInit {
 
   onAddPokemon() {
     this.pokemonAdditionStatus = 'Pokemon was added !';
+  }
+
+  onUpdatePokemonName(event: Event) {
+    console.log(event);
+    const inputElement = event.target as HTMLInputElement;
+    this.pokemonName = inputElement.value;
   }
 
 }
