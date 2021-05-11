@@ -15,10 +15,10 @@ export class PokemonListComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => {
       this.allowNewPokemon = true;
-    }, 5000);
+    }, 3000);
   }
 
   onAddPokemon() {
-    this.pokemonAdditionStatus = 'Pokemon was added !';
+    this.pokemonAdditionStatus = 'Pokemon was added : ' + this.pokemonName;
   }
 }
