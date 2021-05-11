@@ -6,11 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-item.component.scss']
 })
 export class PokemonItemComponent implements OnInit {
-  nbCaught = 0;
+  nbCaught = Math.round(Math.random() * 10);
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  generateBackgroundColor() {
+    return this.nbCaught > 5 ? '#00dd00' : '#882222';
   }
 
 }

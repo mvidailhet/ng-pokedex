@@ -17,12 +17,9 @@
       Button
     </button>
   </div>
-  <div *ngIf="pokemonAdded; else noPokemon">
+  <div *ngIf="pokemonAdded">
     Pokemon was created ! Pokemon name is: {{ pokemonName }}
   </div>
-  <ng-template #noPokemon>
-    No pokemon has been created yet
-  </ng-template>
 </div>
 
 <ul class="list-group">
