@@ -10,6 +10,8 @@ export class PokemonListComponent implements OnInit {
   pokemonName = '';
   pokemonAdded = false;
 
+  pokemons: string[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,5 +22,6 @@ export class PokemonListComponent implements OnInit {
 
   onAddPokemon() {
     this.pokemonAdded = true;
+    this.pokemons.push(this.pokemonName);
   }
 }
