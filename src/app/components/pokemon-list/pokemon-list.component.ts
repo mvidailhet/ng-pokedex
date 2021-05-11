@@ -15,7 +15,8 @@ export class PokemonListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onAddPokemon() {
+  onAddPokemon(element: HTMLElement) {
+    console.log(element);
     this.pokemons.push(this.pokemonName);
   }
 

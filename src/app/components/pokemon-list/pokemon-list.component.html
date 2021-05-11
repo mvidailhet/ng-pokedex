@@ -7,10 +7,11 @@
       class="form-control"
       placeholder="Enter a pokemon name"
       [(ngModel)]="pokemonName"
+      #nameInput
     />
     <button
       class="btn btn-primary"
-      (click)="onAddPokemon()"
+      (click)="onAddPokemon(nameInput)"
       type="button"
     >
       Add pokemon
