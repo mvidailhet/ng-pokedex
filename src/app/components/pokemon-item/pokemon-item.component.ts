@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-item.component.scss']
 })
 export class PokemonItemComponent implements OnInit {
+  nbCaught = 0;
 
   constructor() { }
 
