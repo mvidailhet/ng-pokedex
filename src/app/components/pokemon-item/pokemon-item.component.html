@@ -1,3 +1,7 @@
-<li class="list-group-item" [ngStyle]="{'backgroundColor': generateBackgroundColor()}">
+<li
+  class="list-group-item"
+  [ngStyle]="{ backgroundColor: generateBackgroundColor() }"
+  [ngClass]="{ 'is-red': nbCaught <= 5 }"
+>
   Pokemon ({{ nbCaught }} caught)
 </li>
