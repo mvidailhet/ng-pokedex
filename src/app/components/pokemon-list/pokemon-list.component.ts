@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-list.component.scss']
 })
 export class PokemonListComponent implements OnInit {
+  allowNewPokemon = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.allowNewPokemon = true;
+    }, 5000);
   }
 
 }
