@@ -1,11 +1,12 @@
 <h2 class="display-3">My Pokemons</h2>
 <div class="p-3">
-  <button class="btn btn-primary" [disabled]="!allowNewPokemon">Add pokemon</button>
+  <button class="btn btn-primary" [disabled]="!allowNewPokemon" (click)="onAddPokemon()">
+    Add pokemon
+  </button>
+  <span class="ml-3">{{ pokemonAdditionStatus }}</span>
 </div>
 
 <ul class="list-group">
   <pokedex-pokemon-item></pokedex-pokemon-item>
   <pokedex-pokemon-item></pokedex-pokemon-item>
 </ul>
-
-
