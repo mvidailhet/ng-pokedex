@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LoggingService } from 'src/app/services/logging.service';
+import { PokemonsService } from 'src/app/services/pokemons.service';
 
 @Component({
   selector: 'pokedex-pokemon-item',
@@ -7,17 +9,17 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class PokemonItemComponent implements OnInit {
   @Input('pokemonName') name = '';
-  @Output() removeClick = new EventEmitter<string>();
 
   nbCaught = Math.round(Math.random() * 10);
 
-  constructor() { }
+  constructor(private loggingService: LoggingService, private pokemonService: PokemonsService) { }
 
   ngOnInit(): void {
   }
 
   onRemoveClick() {
-    this.removeClick.emit(this.name);
+    this.pokemonService.removePokemon(this.name);
+    this.loggingService.logItemRemoved(this.name);
   }
 
 }

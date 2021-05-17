@@ -11,4 +11,8 @@ export class LoggingService {
   logItemCreated(itemName: string) {
     console.log("item created: " + itemName);
   }
+
+  logItemRemoved(itemName: string) {
+    console.log("item removed: " + itemName);
+  }
 }

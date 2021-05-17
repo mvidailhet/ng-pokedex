@@ -1,32 +1,28 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { LoggingService } from 'src/app/services/logging.service';
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { LoggingService } from "src/app/services/logging.service";
+import { PokemonsService } from "src/app/services/pokemons.service";
 
 @Component({
-  selector: 'pokedex-pokemon-list',
-  templateUrl: './pokemon-list.component.html',
-  styleUrls: ['./pokemon-list.component.scss']
+  selector: "pokedex-pokemon-list",
+  templateUrl: "./pokemon-list.component.html",
+  styleUrls: ["./pokemon-list.component.scss"],
 })
 export class PokemonListComponent implements OnInit {
-  @ViewChild('nameInput') nameInputElementRef: ElementRef | undefined;
-  pokemonName = '';
-
+  @ViewChild("nameInput") nameInputElementRef: ElementRef | undefined;
+  pokemonName = "";
   pokemons: string[] = [];
 
-  constructor(private loggingService: LoggingService) { }
-
-  ngOnInit(): void {
-    
+  constructor(
+    private loggingService: LoggingService,
+    private pokemonService: PokemonsService
+  ) {
+    this.pokemons = this.pokemonService.pokemons;
   }
+
+  ngOnInit(): void {}
 
   onAddPokemon(element: HTMLElement) {
-    console.log(this.nameInputElementRef?.nativeElement);
-    console.log(element);
     this.loggingService.logItemCreated(this.pokemonName);
-    this.pokemons.push(this.pokemonName);
-  }
-
-  removePokemon(pokemonName: string, index: number) {
-    console.log(pokemonName + ' removed');
-    this.pokemons.splice(index, 1);
+    this.pokemonService.addPokemon(this.pokemonName);
   }
 }
