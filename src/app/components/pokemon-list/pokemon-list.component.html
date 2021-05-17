@@ -21,6 +21,7 @@
 
 <ul class="list-group">
   <pokedex-pokemon-item
+    appBasicHighlight
     *ngFor="let pokemon of pokemons; let i = index"
     [pokemonName]="pokemon"
     (removeClick)="removePokemon(pokemonName, i)"
