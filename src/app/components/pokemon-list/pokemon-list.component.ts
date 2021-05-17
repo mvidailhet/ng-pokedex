@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { LoggingService } from 'src/app/services/logging.service';
 
 @Component({
   selector: 'pokedex-pokemon-list',
@@ -11,7 +12,7 @@ export class PokemonListComponent implements OnInit {
 
   pokemons: string[] = [];
 
-  constructor() { }
+  constructor(private loggingService: LoggingService) { }
 
   ngOnInit(): void {
     
@@ -20,6 +21,7 @@ export class PokemonListComponent implements OnInit {
   onAddPokemon(element: HTMLElement) {
     console.log(this.nameInputElementRef?.nativeElement);
     console.log(element);
+    this.loggingService.logItemCreated(this.pokemonName);
     this.pokemons.push(this.pokemonName);
   }
 
