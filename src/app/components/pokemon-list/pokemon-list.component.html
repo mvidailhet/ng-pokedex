@@ -21,7 +21,8 @@
 
 <ul class="list-group">
   <pokedex-pokemon-item
-    appBasicHighlight
+    appBasicHighlight="blue"
+    defaultColor="gray"
     *ngFor="let pokemon of pokemons; let i = index"
     [pokemonName]="pokemon"
     (removeClick)="removePokemon(pokemonName, i)"
