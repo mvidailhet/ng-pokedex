@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
 import { LoggingService } from "src/app/services/logging.service";
 import { PokemonsService } from "src/app/services/pokemons.service";
 
@@ -13,7 +14,8 @@ export class PokemonListComponent implements OnInit {
   pokemons: string[] = [];
 
   constructor(
-    private pokemonService: PokemonsService
+    private pokemonService: PokemonsService,
+    private router: Router
   ) {
     this.pokemons = this.pokemonService.pokemons;
   }
@@ -22,5 +24,9 @@ export class PokemonListComponent implements OnInit {
 
   onAddPokemon(element: HTMLElement) {
     this.pokemonService.addPokemon(this.pokemonName);
+  }
+
+  goToPokemonPage() {
+    this.router.navigate(['/pokemon']);
   }
 }
