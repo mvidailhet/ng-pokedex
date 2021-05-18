@@ -1,1 +1,3 @@
 <h1>Pokemon : {{ pokemon?.name }}</h1>
+
+<button *ngIf="pokemon" class="btn btn-primary" [routerLink]="['/pokemon', +pokemon.id + 1]">Next Pokemon</button>
