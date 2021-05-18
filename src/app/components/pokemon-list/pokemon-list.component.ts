@@ -13,7 +13,6 @@ export class PokemonListComponent implements OnInit {
   pokemons: string[] = [];
 
   constructor(
-    private loggingService: LoggingService,
     private pokemonService: PokemonsService
   ) {
     this.pokemons = this.pokemonService.pokemons;
@@ -22,7 +21,6 @@ export class PokemonListComponent implements OnInit {
   ngOnInit(): void {}
 
   onAddPokemon(element: HTMLElement) {
-    this.loggingService.logItemCreated(this.pokemonName);
     this.pokemonService.addPokemon(this.pokemonName);
   }
 }

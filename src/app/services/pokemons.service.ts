@@ -6,15 +6,17 @@ import { LoggingService } from './logging.service';
 })
 export class PokemonsService {
 
-  constructor() { }
+  constructor(private loggingService: LoggingService) { }
 
   pokemons: string[] = [];
 
   addPokemon(name: string) {
+    this.loggingService.logItemCreated(name);
     this.pokemons.push(name);
   }
 
   removePokemon(name: string) {
+    this.loggingService.logItemRemoved(name);
     this.pokemons.splice(this.pokemons.indexOf(name), 1);
   }
 }

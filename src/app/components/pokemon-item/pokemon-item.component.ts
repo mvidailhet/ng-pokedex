@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LoggingService } from 'src/app/services/logging.service';
 import { PokemonsService } from 'src/app/services/pokemons.service';
 
@@ -12,14 +12,13 @@ export class PokemonItemComponent implements OnInit {
 
   nbCaught = Math.round(Math.random() * 10);
 
-  constructor(private loggingService: LoggingService, private pokemonService: PokemonsService) { }
+  constructor(private pokemonService: PokemonsService) { }
 
   ngOnInit(): void {
   }
 
   onRemoveClick() {
     this.pokemonService.removePokemon(this.name);
-    this.loggingService.logItemRemoved(this.name);
   }
 
 }
