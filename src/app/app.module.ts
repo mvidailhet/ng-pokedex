@@ -8,13 +8,17 @@ import { PokemonItemComponent } from './components/pokemon-item/pokemon-item.com
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
 import { FormsModule } from '@angular/forms';
 import { BasicHighlightDirective } from './directives/basic-highlight.directive';
+import { HomeComponent } from './pages/home/home.component';
+import { PokemonComponent } from './pages/pokemon/pokemon.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonItemComponent,
     PokemonListComponent,
-    BasicHighlightDirective
+    BasicHighlightDirective,
+    HomeComponent,
+    PokemonComponent
   ],
   imports: [
     BrowserModule,
