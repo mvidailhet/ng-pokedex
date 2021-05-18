@@ -11,6 +11,8 @@ import { Pokemon, PokemonsService } from 'src/app/services/pokemons.service';
 export class PokemonComponent implements OnInit, OnDestroy {
   pokemon: Pokemon | undefined;
   paramsSubscription: Subscription | undefined;
+  queryParamsSubscription: Subscription | undefined;
+  fragmentSubscription: Subscription | undefined;
 
   constructor(private activatedRoute: ActivatedRoute, private pokemonService: PokemonsService) { }
 
@@ -21,14 +23,28 @@ export class PokemonComponent implements OnInit, OnDestroy {
     this.paramsSubscription?.unsubscribe();
   }
 
+  // Expliquer pourquoi j'ai dû mettre une arrow function (this ne marchait pas)
+  handleRouteParams = (params: Params) => {
+    const pokemonId = params["id"];
+    this.pokemon = {
+      id: pokemonId,
+      name: this.pokemonService.pokemons[pokemonId].name,
+    }
+  }
+
+  handleQueryParams(queryParams: Params) {
+    console.log("query parameters !");
+    console.log(queryParams);
+  }
+
+  handleFragment(fragment: string) {
+    console.log("fragment : " + fragment);
+  }
+
   ngOnInit(): void {
-    this.paramsSubscription = this.activatedRoute.params.subscribe((params: Params) => {
-      const pokemonId = params["id"];
-      this.pokemon = {
-        id: pokemonId,
-        name: this.pokemonService.pokemons[pokemonId].name,
-      }
-    });
+    this.paramsSubscription = this.activatedRoute.params.subscribe(this.handleRouteParams);
+    this.queryParamsSubscription = this.activatedRoute.queryParams.subscribe(this.handleQueryParams);
+    this.fragmentSubscription = this.activatedRoute.fragment.subscribe(this.handleFragment);
   }
 
 }
