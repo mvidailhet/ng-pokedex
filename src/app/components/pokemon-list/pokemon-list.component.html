@@ -21,7 +21,7 @@
 
 <ul class="list-group">
   <pokedex-pokemon-item
-    (click)="goToPokemonPage()"
+    (click)="goToPokemonPage(i)"
     appBasicHighlight="blue"
     defaultColor="gray"
     *ngFor="let pokemon of pokemons; let i = index"

@@ -12,10 +12,7 @@ export class PokemonListComponent implements OnInit {
   pokemonName = "";
   pokemons: Pokemon[] = [];
 
-  constructor(
-    private pokemonService: PokemonsService,
-    private router: Router
-  ) {
+  constructor(private pokemonService: PokemonsService, private router: Router) {
     this.pokemons = this.pokemonService.pokemons;
   }
 
@@ -25,7 +22,7 @@ export class PokemonListComponent implements OnInit {
     this.pokemonService.addPokemon(this.pokemonName);
   }
 
-  goToPokemonPage() {
-    this.router.navigate(['/pokemon']);
+  goToPokemonPage(index: number) {
+    this.router.navigate(["/pokemon/" + index]);
   }
 }
