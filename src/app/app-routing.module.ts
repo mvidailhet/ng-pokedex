@@ -15,11 +15,14 @@ const routes: Routes = [
     path: "pokemon/:id",
     component: PokemonComponent,
     children: [{
-      path: "",
+      path: "general",
       component: GeneralComponent
     }, {
       path: "stats",
       component: StatsComponent
+    }, {
+      path: "evolutions",
+      component: EvolutionsComponent
     }, {
       path: "evolutions",
       component: EvolutionsComponent
