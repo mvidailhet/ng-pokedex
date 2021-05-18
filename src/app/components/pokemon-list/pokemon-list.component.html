@@ -25,6 +25,6 @@
     appBasicHighlight="blue"
     defaultColor="gray"
     *ngFor="let pokemon of pokemons; let i = index"
-    [pokemonName]="pokemon"
+    [pokemonName]="pokemon.name"
   ></pokedex-pokemon-item>
 </ul>

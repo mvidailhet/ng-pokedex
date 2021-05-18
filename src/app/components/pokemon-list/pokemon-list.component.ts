@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
-import { LoggingService } from "src/app/services/logging.service";
-import { PokemonsService } from "src/app/services/pokemons.service";
+import { PokemonsService, Pokemon } from "src/app/services/pokemons.service";
 
 @Component({
   selector: "pokedex-pokemon-list",
@@ -11,7 +10,7 @@ import { PokemonsService } from "src/app/services/pokemons.service";
 export class PokemonListComponent implements OnInit {
   @ViewChild("nameInput") nameInputElementRef: ElementRef | undefined;
   pokemonName = "";
-  pokemons: string[] = [];
+  pokemons: Pokemon[] = [];
 
   constructor(
     private pokemonService: PokemonsService,
