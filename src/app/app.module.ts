@@ -10,6 +10,9 @@ import { FormsModule } from '@angular/forms';
 import { BasicHighlightDirective } from './directives/basic-highlight.directive';
 import { HomeComponent } from './pages/home/home.component';
 import { PokemonComponent } from './pages/pokemon/pokemon.component';
+import { GeneralComponent } from './pages/pokemon/tabs/general/general.component';
+import { StatsComponent } from './pages/pokemon/tabs/stats/stats.component';
+import { EvolutionsComponent } from './pages/pokemon/tabs/evolutions/evolutions.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { PokemonComponent } from './pages/pokemon/pokemon.component';
     PokemonListComponent,
     BasicHighlightDirective,
     HomeComponent,
-    PokemonComponent
+    PokemonComponent,
+    GeneralComponent,
+    StatsComponent,
+    EvolutionsComponent
   ],
   imports: [
     BrowserModule,

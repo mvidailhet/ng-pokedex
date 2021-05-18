@@ -11,11 +11,11 @@
 </button>
 
 <nav class="nav nav-tabs">
-  <a class="nav-link active" href="#">General</a>
-  <a class="nav-link" href="#">Stats</a>
-  <a class="nav-link" href="#">Evolutions</a>
+  <a class="nav-link active" routerLink="./">General</a>
+  <a class="nav-link" routerLink="stats">Stats</a>
+  <a class="nav-link" routerLink="evolutions">Evolutions</a>
 </nav>
 
 <div class="p-3">
-  General page
+  <router-outlet></router-outlet>
 </div>
