@@ -23,6 +23,6 @@ export class PokemonListComponent implements OnInit {
   }
 
   goToPokemonPage(index: number) {
-    this.router.navigate(["/pokemon", index]);
+    this.router.navigate(["/pokemon", index], { queryParams: { allowEdit: 1 }, fragment: 'test' });
   }
 }
