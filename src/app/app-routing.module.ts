@@ -2,8 +2,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./guards/auth.guard";
 import { PreventPokemonFormLeaveGuard } from "./guards/prevent-pokemon-form-leave.guard";
+import { ErrorComponent } from "./pages/error/error.component";
 import { HomeComponent } from "./pages/home/home.component";
-import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { PokemonComponent } from "./pages/pokemon/pokemon.component";
 import { EvolutionsComponent } from "./pages/pokemon/tabs/evolutions/evolutions.component";
 import { GeneralComponent } from "./pages/pokemon/tabs/general/general.component";
@@ -45,11 +45,14 @@ const routes: Routes = [
   },
   {
     path: "not-found",
-    component: NotFoundComponent,
+    component: ErrorComponent,
+    data: {
+      message: "Page not found!",
+    }
   },
   {
     path: "**",
-    redirectTo: "not-found"
+    redirectTo: "not-found",
   },
 ];
 
