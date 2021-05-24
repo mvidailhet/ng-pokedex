@@ -1,37 +1,48 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
-import { PokemonComponent } from './pages/pokemon/pokemon.component';
-import { EvolutionsComponent } from './pages/pokemon/tabs/evolutions/evolutions.component';
-import { GeneralComponent } from './pages/pokemon/tabs/general/general.component';
-import { StatsComponent } from './pages/pokemon/tabs/stats/stats.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { HomeComponent } from "./pages/home/home.component";
+import { NotFoundComponent } from "./pages/not-found/not-found.component";
+import { PokemonComponent } from "./pages/pokemon/pokemon.component";
+import { EvolutionsComponent } from "./pages/pokemon/tabs/evolutions/evolutions.component";
+import { GeneralComponent } from "./pages/pokemon/tabs/general/general.component";
+import { StatsComponent } from "./pages/pokemon/tabs/stats/stats.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: HomeComponent,
   },
   {
     path: "pokemon/:id",
     component: PokemonComponent,
-    children: [{
-      path: "general",
-      component: GeneralComponent
-    }, {
-      path: "stats",
-      component: StatsComponent
-    }, {
-      path: "evolutions",
-      component: EvolutionsComponent
-    }, {
-      path: "evolutions",
-      component: EvolutionsComponent
-    }]
+    children: [
+      {
+        path: "general",
+        component: GeneralComponent,
+      },
+      {
+        path: "stats",
+        component: StatsComponent,
+      },
+      {
+        path: "evolutions",
+        component: EvolutionsComponent,
+      },
+      {
+        path: "evolutions",
+        component: EvolutionsComponent,
+      },
+      {
+        path: "",
+        redirectTo: "general",
+        pathMatch: "full"
+      },
+    ],
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
