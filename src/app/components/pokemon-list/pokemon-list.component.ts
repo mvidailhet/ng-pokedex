@@ -33,7 +33,7 @@ export class PokemonListComponent implements OnInit {
 
   onAddPokemon(element: HTMLElement) {
     this.http
-      .post(`${this.apiUrl}/pokemons.json`, { name: this.pokemonName })
+      .post<{name: string}>(`${this.apiUrl}/pokemons.json`, { name: this.pokemonName })
       .subscribe((responseData) => {
         console.log(responseData);
         this.pokemonService.addPokemon(this.pokemonName);
@@ -44,7 +44,7 @@ export class PokemonListComponent implements OnInit {
 
   fetchPokemons() {
     this.http
-      .get(`${this.apiUrl}/pokemons.json`)
+      .get<{ [key: string]: { name: string } }>(`${this.apiUrl}/pokemons.json`)
       .pipe(
         map((responseData) => {
           return Object.values(responseData).map((apiPokemon, index) => {
