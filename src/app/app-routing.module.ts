@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "./guards/auth.guard";
+import { PreventPokemonFormLeaveGuard } from "./guards/prevent-pokemon-form-leave.guard";
 import { HomeComponent } from "./pages/home/home.component";
 import { NotFoundComponent } from "./pages/not-found/not-found.component";
 import { PokemonComponent } from "./pages/pokemon/pokemon.component";
@@ -11,6 +12,7 @@ import { StatsComponent } from "./pages/pokemon/tabs/stats/stats.component";
 const routes: Routes = [
   {
     path: "",
+    canDeactivate: [PreventPokemonFormLeaveGuard],
     component: HomeComponent,
   },
   {

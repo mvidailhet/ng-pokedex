@@ -18,8 +18,15 @@ export class PokemonListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onPokemonNameType() {
+    this.pokemonService.isEditingPokemon = this.pokemonName !== "";
+    console.log(this.pokemonName);
+  }
+
   onAddPokemon(element: HTMLElement) {
     this.pokemonService.addPokemon(this.pokemonName);
+    this.pokemonName = "";
+    this.pokemonService.isEditingPokemon = false;
   }
 
   goToPokemonPage(index: number) {

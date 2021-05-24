@@ -6,6 +6,7 @@
       type="text"
       class="form-control"
       placeholder="Enter a pokemon name"
+      (input)="onPokemonNameType()"
       [(ngModel)]="pokemonName"
       #nameInput
     />
