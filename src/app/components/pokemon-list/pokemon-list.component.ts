@@ -43,21 +43,22 @@ export class PokemonListComponent implements OnInit {
   }
 
   fetchPokemons() {
-    this.http.get(`${this.apiUrl}/pokemons.json`)
-    .pipe(map(responseData => {
-      const pokemons: Pokemon[] = [];
-      Object.values(responseData).forEach((apiPokemon, index) => {
-        pokemons.push({
-          id: index,
-          name: apiPokemon.name
-        });
+    this.http
+      .get(`${this.apiUrl}/pokemons.json`)
+      .pipe(
+        map((responseData) => {
+          return Object.values(responseData).map((apiPokemon, index) => {
+            return <Pokemon>{
+              id: index,
+              name: apiPokemon.name,
+            };
+          });
+        })
+      )
+      .subscribe((apiPokemons: Pokemon[]) => {
+        this.apiPokemons = [...this.apiPokemons, ...apiPokemons];
+        console.log(this.apiPokemons);
       });
-      return pokemons;
-    }))
-    .subscribe((apiPokemons) => { 
-      this.apiPokemons = [...this.apiPokemons, ...apiPokemons];
-      console.log(this.apiPokemons);
-    });
   }
 
   goToPokemonPage(index: number) {
