@@ -9,7 +9,7 @@ export class AuthService {
   constructor() { }
 
   login() {
-    this.loggedIn = false;
+    this.loggedIn = true;
   }
 
   logout() {
