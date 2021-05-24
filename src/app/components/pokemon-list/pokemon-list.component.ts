@@ -1,3 +1,4 @@
+import { HttpClient } from "@angular/common/http";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { PokemonsService, Pokemon } from "src/app/services/pokemons.service";
@@ -12,7 +13,11 @@ export class PokemonListComponent implements OnInit {
   pokemonName = "";
   pokemons: Pokemon[] = [];
 
-  constructor(private pokemonService: PokemonsService, private router: Router) {
+  constructor(
+    private pokemonService: PokemonsService,
+    private router: Router,
+    private http: HttpClient
+  ) {
     this.pokemons = this.pokemonService.pokemons;
   }
 
@@ -20,16 +25,26 @@ export class PokemonListComponent implements OnInit {
 
   onPokemonNameType() {
     this.pokemonService.isEditingPokemon = this.pokemonName !== "";
-    console.log(this.pokemonName);
   }
 
   onAddPokemon(element: HTMLElement) {
-    this.pokemonService.addPokemon(this.pokemonName);
-    this.pokemonName = "";
-    this.pokemonService.isEditingPokemon = false;
+    this.http
+      .post(
+        "https://ng-pokedex-4b90d-default-rtdb.europe-west1.firebasedatabase.app/pokemons.json",
+        { name: this.pokemonName }
+      )
+      .subscribe((responseData) => {
+        console.log(responseData);
+        this.pokemonService.addPokemon(this.pokemonName);
+        this.pokemonName = "";
+        this.pokemonService.isEditingPokemon = false;
+      });
   }
 
   goToPokemonPage(index: number) {
-    this.router.navigate(["/pokemon", index], { queryParams: { allowEdit: 1 }, fragment: 'test' });
+    this.router.navigate(["/pokemon", index], {
+      queryParams: { allowEdit: 1 },
+      fragment: "test",
+    });
   }
 }
