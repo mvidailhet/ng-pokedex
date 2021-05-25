@@ -14,7 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   postPokemon(name: string): Observable<{ name: string }> {
-    return this.http.post<{ name: string }>(`${this.apiUrl}/pokemons.json`, {
+    return this.http.post<Pokemon>(`${this.apiUrl}/pokemons.json`, {
       name,
     });
   }
@@ -24,9 +24,9 @@ export class ApiService {
       .get<{ [key: string]: { name: string } }>(`${this.apiUrl}/pokemons.json`)
       .pipe(
         map((responseData) => {
-          return Object.values(responseData).map((apiPokemon, index) => {
+          return Object.entries(responseData).map(([id, apiPokemon]) => {
             return <Pokemon>{
-              id: index,
+              id,
               name: apiPokemon.name,
             };
           });

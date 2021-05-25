@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { LoggingService } from "./logging.service";
 
 export interface Pokemon {
-  id: number;
+  id: string;
   name: string;
 }
 @Injectable({
@@ -14,11 +14,11 @@ export class PokemonsService {
   isEditingPokemon = false;
   pokemons: Pokemon[] = [];
 
-  addPokemon(name: string) {
+  addPokemon(id: string, name: string) {
     this.loggingService.logItemCreated(name);
     this.pokemons.push({
-      id: this.pokemons.length,
-      name: name,
+      id,
+      name,
     });
   }
 

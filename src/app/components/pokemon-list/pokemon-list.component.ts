@@ -35,7 +35,7 @@ export class PokemonListComponent implements OnInit {
   onAddPokemon(element: HTMLElement) {
     this.apiService.postPokemon(this.pokemonName)
       .subscribe((responseData) => {
-        this.pokemonService.addPokemon(this.pokemonName);
+        this.pokemonService.addPokemon(responseData.name, this.pokemonName);
         this.pokemonName = "";
         this.pokemonService.isEditingPokemon = false;
       });
@@ -46,6 +46,7 @@ export class PokemonListComponent implements OnInit {
     setTimeout(() => {
       this.apiService.fetchPokemon()
         .subscribe((apiPokemons: Pokemon[]) => {
+          console.log(apiPokemons);
           this.pokemonService.pokemons = apiPokemons;
           this.pokemons = this.pokemonService.pokemons;
           this.isFetching = false;
