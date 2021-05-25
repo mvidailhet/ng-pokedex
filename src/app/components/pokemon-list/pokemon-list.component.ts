@@ -1,8 +1,7 @@
-import { HttpClient } from "@angular/common/http";
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
 import { PokemonsService, Pokemon } from "src/app/services/pokemons.service";
-import { map } from "rxjs/operators";
+import { ApiService } from "src/app/services/api.service";
 
 @Component({
   selector: "pokedex-pokemon-list",
@@ -14,13 +13,14 @@ export class PokemonListComponent implements OnInit {
   pokemonName = "";
   pokemons: Pokemon[] = [];
   apiPokemons: Pokemon[] = [];
+  isFetching = false;
   apiUrl =
     "https://ng-pokedex-4b90d-default-rtdb.europe-west1.firebasedatabase.app/";
 
   constructor(
     private pokemonService: PokemonsService,
     private router: Router,
-    private http: HttpClient
+    private apiService: ApiService,
   ) {
     this.pokemons = this.pokemonService.pokemons;
   }
@@ -32,8 +32,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   onAddPokemon(element: HTMLElement) {
-    this.http
-      .post<{name: string}>(`${this.apiUrl}/pokemons.json`, { name: this.pokemonName })
+    this.apiService.postPokemon(this.pokemonName)
       .subscribe((responseData) => {
         console.log(responseData);
         this.pokemonService.addPokemon(this.pokemonName);
@@ -43,22 +42,16 @@ export class PokemonListComponent implements OnInit {
   }
 
   fetchPokemons() {
-    this.http
-      .get<{ [key: string]: { name: string } }>(`${this.apiUrl}/pokemons.json`)
-      .pipe(
-        map((responseData) => {
-          return Object.values(responseData).map((apiPokemon, index) => {
-            return <Pokemon>{
-              id: index,
-              name: apiPokemon.name,
-            };
-          });
-        })
-      )
-      .subscribe((apiPokemons: Pokemon[]) => {
-        this.apiPokemons = [...this.apiPokemons, ...apiPokemons];
-        console.log(this.apiPokemons);
-      });
+    this.isFetching = true;
+    this.apiPokemons = [];
+    setTimeout(() => {
+      this.apiService.fetchPokemon()
+        .subscribe((apiPokemons: Pokemon[]) => {
+          this.apiPokemons = [...this.apiPokemons, ...apiPokemons];
+          console.log(this.apiPokemons);
+          this.isFetching = false;
+        });
+    }, 1000);
   }
 
   goToPokemonPage(index: number) {
