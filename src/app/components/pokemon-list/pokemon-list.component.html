@@ -27,7 +27,7 @@
     appBasicHighlight="blue"
     defaultColor="gray"
     *ngFor="let pokemon of pokemons; let i = index"
-    [pokemonName]="pokemon.name"
+    [pokemon]="pokemon"
   ></pokedex-pokemon-item>
   <div *ngIf="isFetching" class="spinner-border text-primary" role="status">
     <span class="visually-hidden">Loading...</span>

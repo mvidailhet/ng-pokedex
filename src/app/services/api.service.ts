@@ -19,6 +19,10 @@ export class ApiService {
     });
   }
 
+  deletePokemon(id: string) {
+    return this.http.delete(`${this.apiUrl}/pokemons/${id}.json`);
+  }
+
   fetchPokemon(): Observable<Pokemon[]> {
     return this.http
       .get<{ [key: string]: { name: string } }>(`${this.apiUrl}/pokemons.json`)

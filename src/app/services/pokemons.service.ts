@@ -22,12 +22,12 @@ export class PokemonsService {
     });
   }
 
-  private findPokemonIndex(name: string): number {
-    return this.pokemons.findIndex((pokemon) => pokemon.name === name);
+  private findPokemonIndex(id: string): number {
+    return this.pokemons.findIndex((pokemon) => pokemon.id === id);
   }
 
-  removePokemon(name: string) {
-    this.loggingService.logItemRemoved(name);
-    this.pokemons.splice(this.findPokemonIndex(name), 1);
+  removePokemon(pokemon: Pokemon) {
+    this.loggingService.logItemRemoved(pokemon.name);
+    this.pokemons.splice(this.findPokemonIndex(pokemon.id), 1);
   }
 }
