@@ -12,7 +12,6 @@ export class PokemonListComponent implements OnInit {
   @ViewChild("nameInput") nameInputElementRef: ElementRef | undefined;
   pokemonName = "";
   pokemons: Pokemon[] = [];
-  apiPokemons: Pokemon[] = [];
   isFetching = false;
   apiUrl =
     "https://ng-pokedex-4b90d-default-rtdb.europe-west1.firebasedatabase.app/";
@@ -25,7 +24,9 @@ export class PokemonListComponent implements OnInit {
     this.pokemons = this.pokemonService.pokemons;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchPokemons();
+  }
 
   onPokemonNameType() {
     this.pokemonService.isEditingPokemon = this.pokemonName !== "";
@@ -34,7 +35,6 @@ export class PokemonListComponent implements OnInit {
   onAddPokemon(element: HTMLElement) {
     this.apiService.postPokemon(this.pokemonName)
       .subscribe((responseData) => {
-        console.log(responseData);
         this.pokemonService.addPokemon(this.pokemonName);
         this.pokemonName = "";
         this.pokemonService.isEditingPokemon = false;
@@ -43,12 +43,11 @@ export class PokemonListComponent implements OnInit {
 
   fetchPokemons() {
     this.isFetching = true;
-    this.apiPokemons = [];
     setTimeout(() => {
       this.apiService.fetchPokemon()
         .subscribe((apiPokemons: Pokemon[]) => {
-          this.apiPokemons = [...this.apiPokemons, ...apiPokemons];
-          console.log(this.apiPokemons);
+          this.pokemonService.pokemons = apiPokemons;
+          this.pokemons = this.pokemonService.pokemons;
           this.isFetching = false;
         });
     }, 1000);

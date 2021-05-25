@@ -20,32 +20,13 @@
   </div>
 </div>
 
-<h2>New Pokemons</h2>
-<hr>
 <ul class="list-group">
+  <p *ngIf="pokemons.length === 0 && !isFetching">Aucun pokémon de l'api</p>
   <pokedex-pokemon-item
     (click)="goToPokemonPage(i)"
     appBasicHighlight="blue"
     defaultColor="gray"
     *ngFor="let pokemon of pokemons; let i = index"
-    [pokemonName]="pokemon.name"
-  ></pokedex-pokemon-item>
-</ul>
-
-<button
-class="btn btn-primary mt-4"
-(click)="fetchPokemons()"
-type="button"
->Récupérer les pokémons</button>
-<h2 class="mt-3">Saved Pokemons</h2>
-<hr>
-<ul class="list-group">
-  <p *ngIf="apiPokemons.length === 0 && !isFetching">Aucun pokémon de l'api</p>
-  <pokedex-pokemon-item
-    (click)="goToPokemonPage(i)"
-    appBasicHighlight="blue"
-    defaultColor="gray"
-    *ngFor="let pokemon of apiPokemons; let i = index"
     [pokemonName]="pokemon.name"
   ></pokedex-pokemon-item>
   <div *ngIf="isFetching" class="spinner-border text-primary" role="status">
