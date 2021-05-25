@@ -15,6 +15,7 @@ export class PokemonListComponent implements OnInit {
   isFetching = false;
   apiUrl =
     "https://ng-pokedex-4b90d-default-rtdb.europe-west1.firebasedatabase.app/";
+  error: string | undefined;
 
   constructor(
     private pokemonService: PokemonsService,
@@ -50,6 +51,9 @@ export class PokemonListComponent implements OnInit {
           this.pokemonService.pokemons = apiPokemons;
           this.pokemons = this.pokemonService.pokemons;
           this.isFetching = false;
+        }, error => {
+          console.error(error);
+          this.error = error.message;
         });
     }, 1000);
   }
