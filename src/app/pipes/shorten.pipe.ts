@@ -5,8 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ShortenPipe implements PipeTransform {
 
-  transform(value: string | undefined): unknown {
-    return value && value.substr(0, 3) + "...";
+  transform(value: string | undefined, nbCaractersToRemove?: number): unknown {
+    return value && value.substr(0, nbCaractersToRemove || 3) + "...";
   }
 
 }
