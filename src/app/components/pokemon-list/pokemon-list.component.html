@@ -34,8 +34,6 @@
   <p *ngIf="pokemons.length === 0 && !isFetching">Aucun pokémon de l'api</p>
   <pokedex-pokemon-item
     (click)="goToPokemonPage(i)"
-    appBasicHighlight="blue"
-    defaultColor="gray"
     *ngFor="let pokemon of pokemons; let i = index"
     [pokemon]="pokemon"
   ></pokedex-pokemon-item>

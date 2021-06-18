@@ -7,7 +7,6 @@ export enum PokemonTypeEnum {
   WATER = "WATER",
   POISON = "POISON",
 }
-
 export interface Pokemon {
   id: string;
   name: string;

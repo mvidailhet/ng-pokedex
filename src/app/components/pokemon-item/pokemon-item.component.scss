@@ -17,6 +17,10 @@ $pokemon-type-colors: (
   button {
     margin-left: 16px;
   }
+
+  &:hover {
+    background-color: lightgray;
+  }
 }
 
 @each $name, $hex in $pokemon-type-colors {

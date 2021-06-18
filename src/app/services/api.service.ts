@@ -4,6 +4,8 @@ import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Pokemon, PokemonTypeEnum } from "./pokemons.service";
 
+
+
 @Injectable({
   providedIn: "root",
 })
@@ -26,7 +28,7 @@ export class ApiService {
 
   fetchPokemon(): Observable<Pokemon[]> {
     return this.http
-      .get<{ [key: string]: { name: string, type: PokemonTypeEnum } }>(`${this.apiUrl}/pokemons.json`)
+      .get<{ [key: string]: Pokemon }>(`${this.apiUrl}/pokemons.json`)
       .pipe(
         map((responseData) => {
           if (!responseData) return [];
