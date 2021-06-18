@@ -3,6 +3,6 @@
 >
   {{ pokemon?.name }} ({{ nbCaught }} caught)
   <span class="badge badge-primary pokemon-background-type-{{pokemon?.type}}">{{ pokemon?.type }}</span>
-  <span>{{ pokemon?.creationDate }}</span>
+  <span class="date">{{ pokemon?.creationDate | date }}</span>
   <button type="button" class="btn btn-danger" (click)="onRemoveClick()">Remove</button>
 </li>
