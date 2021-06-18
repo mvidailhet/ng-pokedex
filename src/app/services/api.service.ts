@@ -15,10 +15,11 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  postPokemon(name: string, type: PokemonTypeEnum): Observable<{ name: string, type:  PokemonTypeEnum}> {
+  postPokemon(name: string, type: PokemonTypeEnum, creationDate: Date): Observable<Pokemon> {
     return this.http.post<Pokemon>(`${this.apiUrl}/pokemons.json`, {
       name,
-      type
+      type,
+      creationDate,
     });
   }
 
@@ -34,9 +35,8 @@ export class ApiService {
           if (!responseData) return [];
           return Object.entries(responseData).map(([id, apiPokemon]) => {
             return <Pokemon>{
+              ...apiPokemon,
               id,
-              name: apiPokemon.name,
-              type: apiPokemon.type,
             };
           });
         })

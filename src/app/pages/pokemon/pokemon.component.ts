@@ -27,9 +27,8 @@ export class PokemonComponent implements OnInit, OnDestroy {
   handleRouteParams = (params: Params) => {
     const pokemonId = params["id"];
     this.pokemon = {
+      ...this.pokemonService.pokemons[pokemonId],
       id: pokemonId,
-      name: this.pokemonService.pokemons[pokemonId].name,
-      type: this.pokemonService.pokemons[pokemonId].type,
     }
   }
 

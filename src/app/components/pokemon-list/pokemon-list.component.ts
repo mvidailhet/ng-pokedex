@@ -37,10 +37,11 @@ export class PokemonListComponent implements OnInit {
 
   onAddPokemon(element: HTMLElement) {
     if (!this.pokemonType) return;
-    this.apiService.postPokemon(this.pokemonName, this.pokemonType)
+    const date = new Date();
+    this.apiService.postPokemon(this.pokemonName, this.pokemonType, date)
       .subscribe((responseData) => {
         if (!this.pokemonType) return;
-        this.pokemonService.addPokemon(responseData.name, this.pokemonName, this.pokemonType);
+        this.pokemonService.addPokemon(responseData.name, this.pokemonName, this.pokemonType, date);
         this.pokemonName = "";
         this.pokemonService.isEditingPokemon = false;
       });

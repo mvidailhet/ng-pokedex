@@ -11,6 +11,7 @@ export interface Pokemon {
   id: string;
   name: string;
   type: PokemonTypeEnum;
+  creationDate: Date;
 }
 @Injectable({
   providedIn: "root",
@@ -21,12 +22,13 @@ export class PokemonsService {
   isEditingPokemon = false;
   pokemons: Pokemon[] = [];
 
-  addPokemon(id: string, name: string, type: PokemonTypeEnum) {
+  addPokemon(id: string, name: string, type: PokemonTypeEnum, creationDate: Date) {
     this.loggingService.logItemCreated(name);
     this.pokemons.push({
       id,
       name,
       type,
+      creationDate,
     });
   }
 
