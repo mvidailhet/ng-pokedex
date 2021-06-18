@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Pokemon, PokemonTypeEnum } from '../services/pokemons.service';
 
 @Pipe({
-  name: 'pokemonTypeFilter'
+  name: 'pokemonTypeFilter',
+  pure: false,
 })
 export class PokemonTypeFilterPipe implements PipeTransform {
 
