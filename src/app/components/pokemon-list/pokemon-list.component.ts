@@ -13,6 +13,7 @@ export class PokemonListComponent implements OnInit {
   PokemonTypeEnum = PokemonTypeEnum;
   pokemonName = "";
   pokemonType: PokemonTypeEnum | undefined;
+  pokemonTypeToFilter: PokemonTypeEnum | undefined;
   pokemons: Pokemon[] = [];
   isFetching = false;
   apiUrl =

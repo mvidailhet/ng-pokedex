@@ -30,11 +30,22 @@
   </button>
 </div>
 
+<div class="p-3">
+  <div class="mb-3">
+    <label for="pokemonTypeFilterSelect" class="form-label">filtrer par type :</label>
+    <select class="form-control" id="pokemonTypeFilterSelect" [(ngModel)]="pokemonTypeToFilter">
+      <option selected value="">Select a type</option>
+      <option *ngFor="let type of PokemonTypeEnum | keyvalue" [value]="type.key">{{ type.value }}</option>
+    </select>
+  </div>
+  
+</div>
+
 <ul class="list-group">
   <p *ngIf="pokemons.length === 0 && !isFetching">Aucun pokémon de l'api</p>
   <pokedex-pokemon-item
     (click)="goToPokemonPage(i)"
-    *ngFor="let pokemon of pokemons; let i = index"
+    *ngFor="let pokemon of pokemons | pokemonTypeFilter:pokemonTypeToFilter; let i = index"
     [pokemon]="pokemon"
   ></pokedex-pokemon-item>
   <div *ngIf="isFetching" class="spinner-border text-primary" role="status">
