@@ -1,8 +1,8 @@
 <li
   class="list-group-item pokemon-item"
 >
-  {{ pokemon?.name }} ({{ nbCaught }} caught)
+  {{ pokemon?.name | shorten }} ({{ nbCaught }} caught)
   <span class="badge badge-primary pokemon-background-type-{{pokemon?.type}}">{{ pokemon?.type }}</span>
-  <span class="date">{{ pokemon?.creationDate | date }}</span>
+  <span class="date">{{ pokemon?.creationDate | date:"fullDate" }}</span>
   <button type="button" class="btn btn-danger" (click)="onRemoveClick()">Remove</button>
 </li>
