@@ -1,7 +1,26 @@
+$pokemon-type-colors: (
+  GRASS: green,
+  FIRE: orange,
+  WATER: blue,
+  POISON: purple,
+);
+
 :host {
   display: block;
 }
 
 .list-group-item {
   background-color: transparent;
+}
+
+.pokemon-item {
+  button {
+    margin-left: 16px;
+  }
+}
+
+@each $name, $hex in $pokemon-type-colors {
+  .pokemon-background-type-#{$name} {
+    background-color: $hex;
+  }
 }

@@ -12,6 +12,8 @@ import { PokemonsService } from 'src/app/services/pokemons.service';
 export class HomeComponent implements OnInit, CanComponentDeactivate {
   loggedIn = false;
 
+  username = "Michel";
+
   constructor(public authService: AuthService, private pokemonService: PokemonsService) { }
 
   canDeactivate(): boolean | Observable<boolean> | Promise<boolean> {

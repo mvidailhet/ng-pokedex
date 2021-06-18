@@ -1,9 +1,17 @@
 import { Injectable } from "@angular/core";
 import { LoggingService } from "./logging.service";
 
+export enum PokemonTypeEnum {
+  FIRE = "FIRE",
+  GRASS = "GRASS",
+  WATER = "WATER",
+  POISON = "POISON",
+}
+
 export interface Pokemon {
   id: string;
   name: string;
+  type: PokemonTypeEnum;
 }
 @Injectable({
   providedIn: "root",
@@ -14,11 +22,12 @@ export class PokemonsService {
   isEditingPokemon = false;
   pokemons: Pokemon[] = [];
 
-  addPokemon(id: string, name: string) {
+  addPokemon(id: string, name: string, type: PokemonTypeEnum) {
     this.loggingService.logItemCreated(name);
     this.pokemons.push({
       id,
       name,
+      type,
     });
   }
 

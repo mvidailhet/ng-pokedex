@@ -2,5 +2,6 @@
   class="list-group-item pokemon-item"
 >
   {{ pokemon?.name }} ({{ nbCaught }} caught)
+  <span class="badge badge-primary pokemon-background-type-{{pokemon?.type}}">{{ pokemon?.type }}</span>
   <button type="button" class="btn btn-danger" (click)="onRemoveClick()">Remove</button>
 </li>

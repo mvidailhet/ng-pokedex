@@ -1,23 +1,33 @@
 <h2 class="display-3">My Pokemons</h2>
 
 <div class="p-3">
-  <div class="input-group mb-3">
+  <div class="mb-3">
+    <label for="pokemonNameInput" class="form-label">Name</label>
     <input
       type="text"
       class="form-control"
+      id="pokemonNameInput"
       placeholder="Enter a pokemon name"
       (input)="onPokemonNameType()"
       [(ngModel)]="pokemonName"
       #nameInput
     />
-    <button
-      class="btn btn-primary"
-      (click)="onAddPokemon(nameInput)"
-      type="button"
-    >
-      Add pokemon
-    </button>
   </div>
+  <div class="mb-3">
+    <label for="pokemonTypeSelect" class="form-label">Type</label>
+    <select class="form-control" id="pokemonTypeSelect" [(ngModel)]="pokemonType">
+      <option selected>Select a type</option>
+      <option *ngFor="let type of PokemonTypeEnum | keyvalue" [value]="type.key">{{ type.value }}</option>
+    </select>
+  </div>
+  <button
+    class="btn btn-primary"
+    (click)="onAddPokemon(nameInput)"
+    type="button"
+    [disabled]="!pokemonName || !pokemonType"
+  >
+    Add pokemon
+  </button>
 </div>
 
 <ul class="list-group">
