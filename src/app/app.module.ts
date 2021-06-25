@@ -17,6 +17,7 @@ import { EvolutionsComponent } from './pages/pokemon/tabs/evolutions/evolutions.
 import { ErrorComponent } from './pages/error/error.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { PokemonTypeFilterPipe } from './pipes/pokemon-type-filter.pipe';
+import { CreateUserTemplateDrivenComponent } from './pages/create-user-template-driven/create-user-template-driven.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PokemonTypeFilterPipe } from './pipes/pokemon-type-filter.pipe';
     EvolutionsComponent,
     ErrorComponent,
     ShortenPipe,
-    PokemonTypeFilterPipe
+    PokemonTypeFilterPipe,
+    CreateUserTemplateDrivenComponent
   ],
   imports: [
     BrowserModule,
