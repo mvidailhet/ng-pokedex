@@ -9,6 +9,7 @@
           type="text"
           name="username"
           ngModel
+          required
         />
       </div>
       <div class="form-group">
@@ -19,6 +20,8 @@
           id="emailInput"
           name="email"
           ngModel
+          required
+          email
         />
       </div>
       <button [disabled]="!f.valid" class="btn btn-primary" type="submit">submit</button>
