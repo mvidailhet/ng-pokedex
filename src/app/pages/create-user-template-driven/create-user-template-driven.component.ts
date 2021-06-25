@@ -15,6 +15,11 @@ export class CreateUserTemplateDrivenComponent implements OnInit {
 
   onSubmit(userForm: NgForm): void {
     console.log(userForm);
+    userForm.reset({
+      userData: {
+        email: "nice.email@gmail.com"
+      }
+    });
   }
 
 }
