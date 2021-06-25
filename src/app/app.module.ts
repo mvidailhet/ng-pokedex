@@ -18,6 +18,7 @@ import { ErrorComponent } from './pages/error/error.component';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { PokemonTypeFilterPipe } from './pipes/pokemon-type-filter.pipe';
 import { CreateUserTemplateDrivenComponent } from './pages/create-user-template-driven/create-user-template-driven.component';
+import { CreateUserModelDrivenComponent } from './pages/create-user-model-driven/create-user-model-driven.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { CreateUserTemplateDrivenComponent } from './pages/create-user-template-
     ErrorComponent,
     ShortenPipe,
     PokemonTypeFilterPipe,
-    CreateUserTemplateDrivenComponent
+    CreateUserTemplateDrivenComponent,
+    CreateUserModelDrivenComponent
   ],
   imports: [
     BrowserModule,
