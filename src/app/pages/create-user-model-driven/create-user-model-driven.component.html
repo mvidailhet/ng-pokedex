@@ -30,11 +30,20 @@
             formControlName="email"
           />
           <ng-container *ngIf="email.touched">
+            <div 
+              *ngIf="email.status === 'PENDING'" 
+              class="spinner-border spinner-border-sm text-primary" 
+              role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
             <div class="form-text text-danger" *ngIf="email.errors?.required">
               Please provide an email
             </div>
             <div class="form-text text-danger" *ngIf="email.errors?.email">
               Please provide a valid email
+            </div>
+            <div class="form-text text-danger" *ngIf="email.errors?.emailIsForbidden">
+              This email is forbidden
             </div>
           </ng-container>
         </div>
