@@ -11,9 +11,14 @@
             type="text"
             formControlName="username"
           />
-          <div class="form-text text-danger" *ngIf="username.touched && username.errors?.required">
-            Please provide a username
-          </div>
+          <ng-container *ngIf="username.touched">
+            <div class="form-text text-danger" *ngIf="username.errors?.required">
+              Please provide a username
+            </div>
+            <div class="form-text text-danger" *ngIf="username.errors?.nameIsForbidden">
+              This username is forbidden
+            </div>
+          </ng-container>
         </div>
         <div class="form-group">
           <label for="emailInput">Email</label>

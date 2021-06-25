@@ -12,7 +12,7 @@ export class CreateUserModelDrivenComponent implements OnInit {
   constructor() {
     this.userForm = new FormGroup({
       userData: new FormGroup({
-        username: new FormControl("Mitch", Validators.required),
+        username: new FormControl('Mitch', [Validators.required, this.forbiddenNamesValidator]),
         email: new FormControl(null, [Validators.required, Validators.email]),
       }),
       comment: new FormControl(null),
@@ -24,6 +24,14 @@ export class CreateUserModelDrivenComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.userForm);
+  }
+
+  forbiddenNamesValidator(control: FormControl): { [s: string]: boolean } | null {
+    const forbiddenNames = ['Mitch', 'Robert'];
+    if (forbiddenNames.includes(control.value)) {
+      return {'nameIsForbidden': true };
+    }
+    return null;
   }
 
   get username(): FormControl {
