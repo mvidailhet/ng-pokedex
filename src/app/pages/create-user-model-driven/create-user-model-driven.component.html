@@ -38,9 +38,17 @@
         <label for="commentTexarea">Comment</label>
         <textarea id="commentTexarea" class="form-control" formControlName="comment" name="comment" rows="3"></textarea>
       </div>
+      <div formArrayName="hobbies">
+        <h4>Your hobbies</h4>
+        <button class="btn btn-secondary mb-2" type="button" (click)="onAddHobby()">Add hobby</button>
+        <div class="form-group" *ngFor="let hobbyControl of hobbies.controls; let i = index">
+          <label for="hobby-{{i}}">Hobby {{i + 1}}</label>
+          <input id="hobby-{{i}}" type="text" class="form-control" [formControlName]="i">
+        </div>
+      </div>
       <button
         [disabled]="!userForm.valid"
-        class="btn btn-primary"
+        class="btn btn-primary mt-3"
         type="submit"
       >
         submit

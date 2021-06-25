@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-create-user-model-driven",
@@ -16,6 +16,7 @@ export class CreateUserModelDrivenComponent implements OnInit {
         email: new FormControl(null, [Validators.required, Validators.email]),
       }),
       comment: new FormControl(null),
+      hobbies: new FormArray([]),
     });
   }
 
@@ -31,5 +32,14 @@ export class CreateUserModelDrivenComponent implements OnInit {
 
   get email(): FormControl {
     return this.userForm.get("userData.email") as FormControl;
+  }
+
+  get hobbies(): FormArray {
+    return this.userForm.get("hobbies") as FormArray;
+  }
+
+  onAddHobby(): void {
+    const control = new FormControl(null, Validators.required);
+    this.hobbies.push(control);
   }
 }
