@@ -1,6 +1,6 @@
 <div class="container">
   <div class="p-5">
-    <form [formGroup]="userForm">
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="usernameInput">Username</label>
         <input
@@ -21,7 +21,7 @@
           formControlName="email"
         />
       </div>
-      <button class="btn btn-primary" type="submit">submit</button>
+      <button [disabled]="!userForm.valid" class="btn btn-primary" type="submit">submit</button>
     </form>
   </div>
 </div>

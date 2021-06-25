@@ -1,0 +1,6 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+
+input.ng-touched.ng-invalid {
+  border: 1px solid red;
+}
