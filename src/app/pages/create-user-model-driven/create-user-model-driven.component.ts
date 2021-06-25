@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from "@angular/forms";
+import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-create-user-model-driven",
@@ -9,14 +9,14 @@ import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from "
 export class CreateUserModelDrivenComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor() {
-    this.userForm = new FormGroup({
-      userData: new FormGroup({
-        username: new FormControl('Mitch', [Validators.required, this.forbiddenNamesValidator]),
-        email: new FormControl(null, [Validators.required, Validators.email], this.forbiddenEmailsAsyncValidator),
+  constructor(private formBuilder: FormBuilder) {
+    this.userForm = this.formBuilder.group({
+      userData: this.formBuilder.group({
+        username: ['Mitch', [Validators.required, this.forbiddenNamesValidator]],
+        email: [null, [Validators.required, Validators.email], this.forbiddenEmailsAsyncValidator]
       }),
-      comment: new FormControl(null),
-      hobbies: new FormArray([]),
+      comment: '',
+      hobbies: this.formBuilder.array([]),
     });
   }
 
