@@ -1,6 +1,6 @@
 <div class="container">
   <div class="p-5">
-    <form>
+    <form [formGroup]="userForm">
       <div class="form-group">
         <label for="usernameInput">Username</label>
         <input
@@ -8,11 +8,18 @@
           name="username"
           id="usernameInput"
           type="text"
+          formControlName="username"
         />
       </div>
       <div class="form-group">
         <label for="emailInput">Email</label>
-        <input name="email" class="form-control" type="email" id="emailInput" />
+        <input
+          name="email"
+          class="form-control"
+          type="email"
+          id="emailInput"
+          formControlName="email"
+        />
       </div>
       <button class="btn btn-primary" type="submit">submit</button>
     </form>
