@@ -1,22 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 
 @Component({
-  selector: 'app-create-user-model-driven',
-  templateUrl: './create-user-model-driven.component.html',
-  styleUrls: ['./create-user-model-driven.component.scss']
+  selector: "app-create-user-model-driven",
+  templateUrl: "./create-user-model-driven.component.html",
+  styleUrls: ["./create-user-model-driven.component.scss"],
 })
 export class CreateUserModelDrivenComponent implements OnInit {
   userForm: FormGroup;
 
-  constructor() { 
+  constructor() {
     this.userForm = new FormGroup({
-      username: new FormControl('Mitch'),
-      email: new FormControl(),
+      username: new FormControl("Mitch", Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
     });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
+  onSubmit(): void {
+    console.log(this.userForm);
+  }
 }
