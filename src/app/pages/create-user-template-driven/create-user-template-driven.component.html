@@ -10,7 +10,12 @@
           name="username"
           ngModel
           required
+          #username="ngModel"
         />
+        <div
+          class="form-text text-danger" *ngIf="username.touched && username.errors?.required">
+          Please provide a username
+        </div>
       </div>
       <div class="form-group">
         <label for="emailInput">Email</label>
@@ -22,9 +27,20 @@
           ngModel
           required
           email
+          #email="ngModel"
         />
+        <ng-container *ngIf="email.touched">
+          <div class="form-text text-danger" *ngIf="email.errors?.required">
+            Please provide an email
+          </div>
+          <div class="form-text text-danger" *ngIf="email.errors?.email">
+            Please provide a valid email
+          </div>
+        </ng-container>
       </div>
-      <button [disabled]="!f.valid" class="btn btn-primary" type="submit">submit</button>
+      <button [disabled]="!f.valid" class="btn btn-primary" type="submit">
+        submit
+      </button>
     </form>
   </div>
 </div>
