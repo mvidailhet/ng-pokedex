@@ -21,4 +21,12 @@ export class CreateUserModelDrivenComponent implements OnInit {
   onSubmit(): void {
     console.log(this.userForm);
   }
+
+  get username(): FormControl {
+    return this.userForm.get('username') as FormControl;
+  }
+
+  get email(): FormControl {
+    return this.userForm.get('email') as FormControl;
+  }
 }
